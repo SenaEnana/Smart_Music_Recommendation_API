@@ -32,9 +32,3 @@ def read_view():
     return {
        "message": "Here you can view the song!"
     }
-
-@app.get("/download")
-def read_download():
-    return {
-       "message": "Here you can download your song!"
-    }
