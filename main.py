@@ -15,3 +15,9 @@ def read_search():
        "message": "Here you can search what you want!"
     }
 
+@app.get("/all-song")
+def read_all():
+    return {
+       "message": "Here you see all songs!"
+    }
+
