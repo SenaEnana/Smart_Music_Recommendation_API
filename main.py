@@ -5,4 +5,6 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello,": "Music Bot!"}
+    return {
+       "message": "Welcome to Smart Music Recommendation API!"
+    }
