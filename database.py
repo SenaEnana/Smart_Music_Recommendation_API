@@ -4,4 +4,5 @@ connection = sqlite3.connect("music-recommendation-database.db")
 
 cursor = connection.cursor()
 
+connection.commit()
 
