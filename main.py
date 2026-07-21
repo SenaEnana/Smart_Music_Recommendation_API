@@ -28,7 +28,7 @@ def recommend_song():
     }
 
 
-@app.get("/songs/{song_id}")
+@app.get("/songs/{id}")
 def view_song():
     return {
        "message": "Here you can view the song!"
