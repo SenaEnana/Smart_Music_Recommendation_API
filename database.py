@@ -26,3 +26,5 @@ cursor.execute(
     single_song
 )
 
+cursor.execute("SELECT * FROM songs")
+
