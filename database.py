@@ -14,7 +14,7 @@ cursor.execute("""
         theme TEXT,
         album TEXT,
         language TEXT,
-        explicit No
+        explicit INTEGER NOT NULL CHECK (is_active IN (0, 1))
     )
 """)
 connection.commit()
