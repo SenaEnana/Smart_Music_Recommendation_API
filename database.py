@@ -18,3 +18,11 @@ cursor.execute("""
 """)
 
 single_song = ("The Search", "NF", "Rap", "Calm", "Self Reflection", "The Search", "English", 0)
+cursor.execute(
+    """
+    INSERT INTO songs (title, artist, genre, mood, theme, album, language, explicit) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """, 
+    single_song
+)
+
