@@ -27,4 +27,5 @@ cursor.execute(
 )
 
 cursor.execute("SELECT * FROM songs")
+rows = cursor.fetchall()
 
