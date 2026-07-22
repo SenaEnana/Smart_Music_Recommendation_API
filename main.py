@@ -9,26 +9,27 @@ def read_root():
        "message": "Hello, Music Bot!"
     }
 
-@app.get("/search-song")
-def read_search():
+@app.get("/songs")
+def get_all_songs():
+    return {
+       "message": "Here you can see all songs!"
+    }
+
+@app.get("/songs/search")
+def search_song():
     return {
        "message": "Here you can search what you want!"
     }
 
 @app.get("/recommend")
-def read_recommend():
+def recommend_song():
     return {
        "message": "Here is what I recommend based on your input!"
     }
 
-@app.get("/all-song")
-def read_all():
-    return {
-       "message": "Here you can see all songs!"
-    }
 
-@app.get("/view-song")
-def read_view():
+@app.get("/songs/{id}")
+def view_song():
     return {
        "message": "Here you can view the song!"
     }
