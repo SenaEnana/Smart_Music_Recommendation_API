@@ -19,7 +19,7 @@ cursor.execute("""
         );
     """)
 
-cursor.execute("SELECT * FROM songs")
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
 rows = cursor.fetchall()
 
 for row in rows:
