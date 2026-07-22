@@ -33,4 +33,5 @@ for row in rows:
     print(row)
 
 connection.commit()
-
+print("Data successfully added!")
+connection.close()
