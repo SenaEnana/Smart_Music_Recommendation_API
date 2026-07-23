@@ -1,6 +1,7 @@
+from typing import Literal
 from fastapi import FastAPI, status, HTTPException
-from pydantic import BaseModel
-from database import get_db_connection 
+from pydantic import BaseModel, Field
+from database import get_db_connection
 
 app = FastAPI()
 
