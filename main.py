@@ -30,6 +30,13 @@ async def create_song(song: Song):
         cursor.execute(check_query, (song.title, song.artist))
         existing_song = cursor.fetchone()
 
+        if existing_song:
+            connection.close()
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Duplicate value: '{song.title}' by '{song.artist}' already exists in the database."
+            )
+
         query = """
         INSERT INTO songs (title, artist, genre, mood, theme, album, language, explicit)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
