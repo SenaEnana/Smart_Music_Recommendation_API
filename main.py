@@ -61,7 +61,6 @@ async def create_song(song: Song):
     except HTTPException:
         raise
     except Exception as e:
-        # Catch any unexpected system or database errors
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Database error: {str(e)}"
