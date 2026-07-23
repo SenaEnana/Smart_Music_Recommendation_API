@@ -9,7 +9,16 @@ def read_root():
     return {
        "message": "Hello, Music Bot!"
     }
-    
+
+class Song(BaseModel):
+    title: str
+    artist: str
+    genre: str 
+    mood: str 
+    theme: str
+    album: str
+    language: str 
+    explicit: int 
 
 @app.get("/songs")
 def get_all_songs():
