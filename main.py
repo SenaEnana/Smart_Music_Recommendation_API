@@ -1,5 +1,6 @@
 from fastapi import FastAPI, status
 from pydantic import BaseModel
+from database import get_db_connection 
 
 app = FastAPI()
 
@@ -53,3 +54,5 @@ def view_song():
     return {
        "message": "Here you can view the song!"
     }
+
+
