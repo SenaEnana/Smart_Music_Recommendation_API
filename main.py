@@ -1,4 +1,4 @@
-from fastapi import FastAPI, status
+from fastapi import FastAPI, status, HTTPException
 from pydantic import BaseModel
 from database import get_db_connection 
 
@@ -20,14 +20,6 @@ def read_root():
        "message": "Hello, Music Bot!"
     }
 
-# music_recommendation_database = []
-
-@app.post("/songs/", status_code=status.HTTP_201_CREATED)
-async def create_song(song: Song):
-    song_dict = song.model_dump()
-   #  music_recommendation_database.append(song_dict)
-    
-    return {"message": "Song added successfully", "data": song_dict}
 
 @app.get("/songs")
 def get_all_songs():
@@ -53,4 +45,3 @@ def view_song():
     return {
        "message": "Here you can view the song!"
     }
-
