@@ -4,13 +4,6 @@ from database import get_db_connection
 
 app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {
-       "message": "Hello, Music Bot!"
-    }
-
 class Song(BaseModel):
     title: str
     artist: str
@@ -20,6 +13,12 @@ class Song(BaseModel):
     album: str
     language: str 
     explicit: int 
+
+@app.get("/")
+def read_root():
+    return {
+       "message": "Hello, Music Bot!"
+    }
 
 # music_recommendation_database = []
 
@@ -54,5 +53,4 @@ def view_song():
     return {
        "message": "Here you can view the song!"
     }
-
 
