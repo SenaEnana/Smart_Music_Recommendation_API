@@ -20,6 +20,8 @@ class Song(BaseModel):
     language: str 
     explicit: int 
 
+music_recommendation_database = []
+
 @app.get("/songs")
 def get_all_songs():
     return {
