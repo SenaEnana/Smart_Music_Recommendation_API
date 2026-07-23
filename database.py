@@ -1,37 +1,31 @@
 import sqlite3
 
-connection = sqlite3.connect("music-recommendation-database.db")
-cursor = connection.cursor()
+DB_NAME = "music-recommendation-database.db"
 
-cursor.execute("""
-    CREATE TABLE IF NOT EXISTS songs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT,
-        artist TEXT,
-        genre TEXT,
-        mood TEXT,
-        theme TEXT,
-        album TEXT,
-        language TEXT,
-        explicit INTEGER NOT NULL CHECK (explicit IN (0, 1))
-    );
-""")
+def init_db():
+    """Run this once to make sure the table exists."""
+    connection = sqlite3.connect(DB_NAME)
+    cursor = connection.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS songs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT,
+            artist TEXT,
+            genre TEXT,
+            mood TEXT,
+            theme TEXT,
+            album TEXT,
+            language TEXT,
+            explicit INTEGER NOT NULL CHECK (explicit IN (0, 1))
+        );
+    """)
+    connection.commit()
+    connection.close()
 
-single_song = ("The Search", "NF", "Rap", "Calm", "Self Reflection", "The Search", "English", 0)
-cursor.execute(
-    """
-    INSERT INTO songs (title, artist, genre, mood, theme, album, language, explicit) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """, 
-    single_song
-)
+def get_db_connection():
+    """Call this inside your API routes to get a fresh connection."""
+    connection = sqlite3.connect(DB_NAME)
+    connection.row_factory = sqlite3.Row 
+    return connection
 
-cursor.execute("SELECT * FROM songs")
-rows = cursor.fetchall()
-
-for row in rows:
-    print(row)
-
-connection.commit()
-print("Data successfully added!")
-connection.close()
+init_db()
