@@ -20,12 +20,12 @@ class Song(BaseModel):
     language: str 
     explicit: int 
 
-music_recommendation_database = []
+# music_recommendation_database = []
 
 @app.post("/songs/", status_code=status.HTTP_201_CREATED)
 async def create_song(song: Song):
     song_dict = song.model_dump()
-    music_recommendation_database.append(song_dict)
+   #  music_recommendation_database.append(song_dict)
     
     return {"message": "Song added successfully", "data": song_dict}
 
