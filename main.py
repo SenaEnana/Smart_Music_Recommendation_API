@@ -1,4 +1,5 @@
 from fastapi import FastAPI, status
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -8,6 +9,7 @@ def read_root():
     return {
        "message": "Hello, Music Bot!"
     }
+    
 
 @app.get("/songs")
 def get_all_songs():
