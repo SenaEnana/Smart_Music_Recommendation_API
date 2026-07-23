@@ -22,3 +22,8 @@ def init_db():
     connection.commit()
     connection.close()
 
+def get_db_connection():
+    """Call this inside your API routes to get a fresh connection."""
+    connection = sqlite3.connect(DB_NAME)
+    connection.row_factory = sqlite3.Row 
+    return connection
