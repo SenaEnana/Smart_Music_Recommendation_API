@@ -13,7 +13,7 @@ class Song(BaseModel):
     theme: str
     album: str
     language: str 
-    explicit: int 
+    explicit: Literal[0, 1] 
 
 @app.get("/")
 def read_root():
