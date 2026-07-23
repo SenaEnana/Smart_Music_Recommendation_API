@@ -31,6 +31,17 @@ async def create_song(song: Song):
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """
 
+        cursor.execute(query, (
+            song.title,
+            song.artist,
+            song.genre,
+            song.mood,
+            song.theme,
+            song.album,
+            song.language,
+            song.explicit
+        ))
+        
 
         
     except Exception as e:
