@@ -20,6 +20,18 @@ def read_root():
        "message": "Hello, Music Bot!"
     }
 
+@app.post("/songs/", status_code=status.HTTP_201_CREATED)
+async def create_song(song: Song):
+    try:
+        connection = get_db_connection()
+        cursor = connection.cursor()
+
+        
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Database error: {str(e)}"
+        ) 
 
 @app.get("/songs")
 def get_all_songs():
@@ -45,3 +57,4 @@ def view_song():
     return {
        "message": "Here you can view the song!"
     }
+
