@@ -22,6 +22,13 @@ class Song(BaseModel):
 
 music_recommendation_database = []
 
+@app.post("/songs/", status_code=status.HTTP_201_CREATED)
+async def create_song(song: Song):
+    # 3. Process and "add" the incoming data
+
+    
+    return {"message": "Song added successfully", "data": song_dict}
+
 @app.get("/songs")
 def get_all_songs():
     return {
