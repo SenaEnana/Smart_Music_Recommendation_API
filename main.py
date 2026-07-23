@@ -42,7 +42,10 @@ async def create_song(song: Song):
             song.explicit
         ))
         
-
+        connection.commit()
+        connection.close()
+        
+        return {"message": "Song added successfully", "data": song.model_dump()}
         
     except Exception as e:
         raise HTTPException(
