@@ -24,8 +24,8 @@ music_recommendation_database = []
 
 @app.post("/songs/", status_code=status.HTTP_201_CREATED)
 async def create_song(song: Song):
-    # 3. Process and "add" the incoming data
-
+    song_dict = song.model_dump()
+    music_recommendation_database.append(song_dict)
     
     return {"message": "Song added successfully", "data": song_dict}
 
