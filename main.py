@@ -26,6 +26,7 @@ async def create_song(song: Song):
     try:
         connection = get_db_connection()
         cursor = connection.cursor()
+        check_query = "SELECT id FROM songs WHERE title = ? AND artist = ?"
 
         query = """
         INSERT INTO songs (title, artist, genre, mood, theme, album, language, explicit)
