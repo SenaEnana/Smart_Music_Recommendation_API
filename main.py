@@ -26,6 +26,12 @@ async def create_song(song: Song):
         connection = get_db_connection()
         cursor = connection.cursor()
 
+        query = """
+        INSERT INTO songs (title, artist, genre, mood, theme, album, language, explicit)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """
+
+
         
     except Exception as e:
         raise HTTPException(
